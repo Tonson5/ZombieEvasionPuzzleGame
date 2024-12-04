@@ -20,11 +20,15 @@ public class PlayerMovment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.forward = rb.velocity;
-        transform.rotation = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
+        
         if (Input.GetButtonDown("Control"))
         {
             ChangeControl();
+        }
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("vertical") != 0)
+        {
+            transform.forward = rb.velocity;
+            transform.rotation = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
         }
     }
     public void MovePlayer()

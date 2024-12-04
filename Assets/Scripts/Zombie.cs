@@ -49,6 +49,11 @@ public class Zombie : MonoBehaviour
         Debug.DrawRay(startPoint, direction * rayLength, Color.red);
         
     }
+    public void StopChase()
+    {
+        chasing = false;
+        wandering = true;
+    }
     public void NewWanderPosition()
     {
         if (wandering)

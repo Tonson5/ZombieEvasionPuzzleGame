@@ -21,4 +21,8 @@ public class ZombieSight : MonoBehaviour
         myZom.Check();
 
     }
+    private void OnTriggerExit(Collider other)
+    {
+        myZom.StopChase();
+    }
 }
