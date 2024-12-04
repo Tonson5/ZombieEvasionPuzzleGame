@@ -1455,6 +1455,7 @@ MonoBehaviour:
   text: {fileID: 1503431402}
   zombie: {fileID: 6312650687570586675, guid: fd5abbce2c7be8a469540bd87cb34996, type: 3}
   zomSpawn: {fileID: 1533597010}
+  maxtime: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,7 +1745,7 @@ GameObject:
   - component: {fileID: 1106744915}
   - component: {fileID: 1106744914}
   - component: {fileID: 1106744916}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
