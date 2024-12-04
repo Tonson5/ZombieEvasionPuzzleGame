@@ -7,9 +7,13 @@ public class Timer : MonoBehaviour
 {
     public int timeLeft;
     public TextMeshProUGUI text;
+    public GameObject zombie;
+    public GameObject zomSpawn;
+    public int maxtime;
     // Start is called before the first frame update
     void Start()
     {
+        maxtime = timeLeft;
         InvokeRepeating("ReduceTime",1, 1);
     }
 
@@ -19,7 +23,12 @@ public class Timer : MonoBehaviour
         text.text = "" + timeLeft;
         if (timeLeft == 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            for (int i = 0; i < 10; i++)
+            {
+                Instantiate(zombie,zomSpawn.transform.position,zomSpawn.transform.rotation);
+            }
+            timeLeft = maxtime * 2;
+            maxtime *= 2;
         }
     }
     public void ReduceTime()

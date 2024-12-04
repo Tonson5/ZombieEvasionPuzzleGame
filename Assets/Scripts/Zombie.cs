@@ -11,15 +11,21 @@ public class Zombie : MonoBehaviour
     public bool chasing;
     public GameObject player;
     public NavMeshAgent myAgent;
-    // Start is called before the first frame update
+    public float speed;
+    public Vector3 startPoint; 
+    public Vector3 endPoint; 
+    public float rayLength = 100f;
     void Start()
     {
+        player = GameObject.Find("Player");
         InvokeRepeating("NewWanderPosition",0, Random.Range(1, 5));
+        speed = Random.Range(2, 4);
     }
 
     // Update is called once per frame
     void Update()
     {
+        myAgent.speed = speed;
         if (chasing)
         {
             wandering = false;
@@ -29,7 +35,19 @@ public class Zombie : MonoBehaviour
     }
     public void Check()
     {
-        chasing = true;
+        startPoint = transform.position;
+        Vector3 direction = (endPoint - startPoint).normalized;
+        RaycastHit hit;
+        if (Physics.Raycast(startPoint, direction, out hit, rayLength))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                chasing = true;
+            }
+        } 
+        
+        Debug.DrawRay(startPoint, direction * rayLength, Color.red);
+        
     }
     public void NewWanderPosition()
     {

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieSight : MonoBehaviour
+public class Follow : MonoBehaviour
 {
-    public Zombie myZom;
+    public GameObject obj;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,11 +14,6 @@ public class ZombieSight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        myZom.endPoint = other.transform.position;
-        myZom.Check();
-
+        transform.position = obj.transform.position;
     }
 }
